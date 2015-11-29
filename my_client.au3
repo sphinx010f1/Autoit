@@ -1,14 +1,14 @@
 Global $Box
 ;~ HotKeySet("{F1}", "_Start")
 TCPStartUp()
-$g_IP = InputBox("Введите  IP - адрес","Введите  IP - адрес")
+$g_IP = InputBox("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  IP - пїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  IP - пїЅпїЅпїЅпїЅпїЅ")
 $socket = TCPConnect( $g_IP, 1200 )
 ;~ $msg = TCPSend($socket, $Box)
 
 If $socket = -1 Then
     Exit
 Else
-    $sMainWindow = InputBox("Список ф-й:", "1 - проверить версию" & @CRLF & "2 - обновить")
+    $sMainWindow = InputBox("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ-пїЅ:", "1 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ" & @CRLF & "2 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
 	$msg = TCPSend($socket, $sMainWindow)
 
 EndIf
