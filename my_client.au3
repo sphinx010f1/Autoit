@@ -1,21 +1,25 @@
 Global $Box
 ;~ HotKeySet("{F1}", "_Start")
-TCPStartUp()
-$g_IP = InputBox("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  IP - пїЅпїЅпїЅпїЅпїЅ","пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  IP - пїЅпїЅпїЅпїЅпїЅ")
-$socket = TCPConnect( $g_IP, 1200 )
-;~ $msg = TCPSend($socket, $Box)
-
-If $socket = -1 Then
-    Exit
-Else
-    $sMainWindow = InputBox("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ-пїЅ:", "1 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ" & @CRLF & "2 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
-	$msg = TCPSend($socket, $sMainWindow)
-
-EndIf
-
-while 1
-          Sleep(100)
-WEnd
-
-TCPCloseSocket($socket)
-TCPShutdown()
+TCPStartup()
+$g_IP = InputBox("Medoc Checker", "")
+$socket = TCPConnect($g_IP, 1200)
+If @Error Then 
+	; Сервер, вероятно, в офлайне, или порт не открыт на сервере.
+	MsgBox(4096 + 16, "Клиент", "Не удалось подключиться, @error = " & @Error)
+	Return False
+	
+	If $socket = -1 Then
+		Exit
+	Else
+		$sMainWindow = InputBox("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ-пїЅ:", "1 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ" & @CRLF & "2 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")
+		$msg = TCPSend($socket, $sMainWindow)
+		
+	EndIf
+	
+	While 1
+		Sleep(100)
+	WEnd
+	
+	TCPCloseSocket($socket)
+	TCPShutdown()
+	
