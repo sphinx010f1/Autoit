@@ -1,7 +1,7 @@
 Global $Box
 ;~ HotKeySet("{F1}", "_Start")
 TCPStartup()
-$g_Ip = InputBox("Medoc Checker", "Введите  IP - адрес")
+$g_Ip = InputBox("Medoc Checker", "РІРІРµРґРёС‚Рµ  IP - Р°РґСЂРµСЃ")
 $Socket = TCPConnect($g_Ip, 1200)
 If @Error Then MsgBox(4096 + 16, "Клиент‚", "Сервер, вероятно, в офлайне, или порт не открыт на сервере, @error = " & @Error)
 If $Socket = -1 Then
